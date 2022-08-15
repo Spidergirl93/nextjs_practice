@@ -49,7 +49,7 @@ export const getStaticProps = async () => {
         description: meetup.description,
       })),
     },
-    revalidate: 0.01,
+    revalidate: 1,
   };
 };
 
