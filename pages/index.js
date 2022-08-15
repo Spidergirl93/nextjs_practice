@@ -16,9 +16,18 @@ const HomePage = (props) => {
   );
 };
 
+/* export const getServerSideProps = async (context) => {
+  const req = context.req;
+  const res = context.res;
 
+  return {
+    props: {
+      meetups: DUMMY_DATA,
+    },
+  };
+}; */
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   const client = await MongoClient.connect(
     "mongodb+srv://walkmary:SesameOpen@meetup.ltcqybe.mongodb.net/?retryWrites=true&w=majority"
   );
@@ -39,7 +48,8 @@ export const getServerSideProps = async () => {
         address: meetup.address,
         description: meetup.description,
       })),
-    }
+    },
+    revalidate: 1,
   };
 };
 
