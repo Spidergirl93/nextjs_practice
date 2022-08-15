@@ -27,7 +27,7 @@ const HomePage = (props) => {
   };
 }; */
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const client = await MongoClient.connect(
     "mongodb+srv://walkmary:SesameOpen@meetup.ltcqybe.mongodb.net/?retryWrites=true&w=majority"
   );
@@ -49,7 +49,6 @@ export const getStaticProps = async () => {
         description: meetup.description,
       })),
     },
-    revalidate: 1,
   };
 };
 
